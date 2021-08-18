@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 public class StringBuilderRunner{
   public static StringBuilder getString(){
@@ -48,8 +49,8 @@ public class StringBuilderRunner{
     case 2:
         StringBuilder string=getString();
         String [] array=getMultipleString();
-        StringBuilder string=StringBuilderTask.finalString(string,array);
-        System.out.println("Final string after separated by # is:"+string);
+        StringBuilder stringFinal=StringBuilderTask.finalString(string,array);
+        System.out.println("Final string after separated by # is:"+stringFinal);
         break;
     case 3:
          String [] stringArr=getMultipleString();
@@ -71,7 +72,7 @@ public class StringBuilderRunner{
          StringBuilder string1=createStringBuilder(arr);
          System.out.println("Enter the string to be replaced:");
          String replaceString=sc.next();
-         StringBuilder finalString2=StringBuilderTask.replaceString(string1,arr,replaceString);
+         StringBuilder finalString2=StringBuilderTask.replaceString(string1,replaceString);
          System.out.println("Final string after replacing space with - is:"+finalString2);
          break;
     case 6:
@@ -86,10 +87,8 @@ public class StringBuilderRunner{
           int startIndex=sc.nextInt();
           System.out.println("Enter the ending index:");
           int endIndex=sc.nextInt();
-          System.out.println("Enter the minimum length of the string:");
-          int minLength=sc.nextInt();
-          StringBuilder finalString4=StringBuilderTask.deleteCharacters(stringbuilder,startIndex,endIndex,minLength);
-          System.out.println("Final string after deleting 6 to 8 index is:"+finalString4);
+          StringBuilder deletedString=StringBuilderTask.deleteCharacters(stringbuilder,startIndex,endIndex);
+          System.out.println("Final string after deleting 6 to 8 index is:"+deletedString);
           break;
       case 8:
           StringBuilder stringbuilder1=getString();
@@ -97,11 +96,9 @@ public class StringBuilderRunner{
           int startIndex1=sc.nextInt();
           System.out.println("Enter the ending index:");
           int endIndex1=sc.nextInt();
-          System.out.println("Enter the minimum length of the string:");
-          int minLength1=sc.nextInt();
           System.out.println("Enter the string to be replaced:");
           String replaceStr=sc.next();
-          StringBuilder finalString5=StringBuilderTask.replaceCharacters(stringbuilder1,startIndex1,endIndex1,minLength1,replaceStr);
+          StringBuilder finalString5=StringBuilderTask.replaceCharacters(stringbuilder1,startIndex1,endIndex1,replaceStr);
           System.out.println("Final string after replacing 6 to 8 index is:"+finalString5);
           break;
      case 9:
@@ -109,16 +106,16 @@ public class StringBuilderRunner{
          StringBuilder string3=createStringBuilder(arr2);
          System.out.println("Enter the string to be replaced:");
          String replaceString1=sc.next();
-         int index=StringBuilderTask.findIndex(string3,arr2,replaceString1);
-         System.out.println("First index of # is:"+index);
+         StringBuilder stringBuild=StringBuilderTask.findIndex(string3,replaceString1);
+         System.out.println("Final string is:"+stringBuild);
          break;
     case 10:
          String [] arr3=getMultipleString();
          StringBuilder string4=createStringBuilder(arr3);
          System.out.println("Enter the string to be replaced:");
          String replaceString2=sc.next();
-         int lastIndex=StringBuilderTask.findLastIndex(string4,arr3,replaceString2);
-         System.out.println("Last index of # is:"+lastIndex);
+         StringBuilder stringBuild1=StringBuilderTask.findLastIndex(string4,replaceString2);
+         System.out.println("Final string is:"+stringBuild1);
          break;
     default:
         System.out.println("No program");
@@ -127,25 +124,6 @@ public class StringBuilderRunner{
 }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    
+   
+
