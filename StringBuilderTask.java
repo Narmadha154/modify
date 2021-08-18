@@ -1,3 +1,5 @@
+
+
 import java.util.Scanner;
 public class StringBuilderTask{
      public static int findLength(){
@@ -5,7 +7,7 @@ public class StringBuilderTask{
            int length=sb.length();
            return length;
      }
-     public static int finalLength(StringBuilder string){
+    public static int finalLength(StringBuilder string){
            int length=string.length();
            return length; 
      }
@@ -20,97 +22,105 @@ public class StringBuilderTask{
              System.out.println("Final string length is:"+finalStringLength);
              return string;
       }
-             public static StringBuilder finalMultipleString(StringBuilder string,String str3){
+             public static StringBuilder finalMultipleString(StringBuilder string,String stringThree){
               int initialLength=finalLength(string);
               System.out.println("Initial length of the string is:"+initialLength);
               int index=string.indexOf(" ");
-              string.insert(index,str3);
-              StringBuilder finalString=string.insert(index," ");
-              int finalLength=finalLength(finalString);
+              string.insert(index,stringThree);
+              string.insert(index," ");
+              int finalLength=finalLength(string);
               System.out.println("Final string length is:"+finalLength);
-              return finalString;
+              return string;
       }  
       public static StringBuilder deleteFirstString(StringBuilder string){
               int initialLength=finalLength(string);
               System.out.println("Initial length of the string is:"+initialLength);
               int index=string.indexOf(" ");
-              StringBuilder finalString=string.delete(0,index);
-              int finalLength=finalLength(finalString);
+              string.delete(0,index);
+              int finalLength=finalLength(string);
               System.out.println("Final string length is:"+finalLength);
-              return finalString;
+              return string;
      }
-          public static StringBuilder replaceString(StringBuilder string,String [] array,String replaceString){
+          public static StringBuilder replaceString(StringBuilder string,String replaceString){
               int initialLength=finalLength(string);
               System.out.println("Initial length of the string is:"+initialLength);
-              /*int index=string.indexOf(" ");*/
-              StringBuilder string1=string.replace(array[0].length(),array[0].length()+1,replaceString);
-              StringBuilder finalString=string1.replace(array[0].length()+array[1].length()+1,array[0].length()+array[1].length()+2,replaceString);
-              int finalLength=finalLength(finalString);
+              for(int i=0;i<string.length();i++){
+                  if(string.charAt(i)==' '){
+                      string.replace(i,i+1,replaceString);
+                   }
+              }
+              int finalLength=finalLength(string);
               System.out.println("Final string length is:"+finalLength);
-              return finalString;
+              return string;
     } 
     public static StringBuilder reverseString(StringBuilder string){
               int initialLength=finalLength(string);
               System.out.println("Initial length of the string is:"+initialLength);
-              StringBuilder finalString=string.reverse();
-              int finalLength=finalLength(finalString);
+              string.reverse();
+              int finalLength=finalLength(string);
               System.out.println("Final string length is:"+finalLength);
-              return finalString;
+              return string;
     } 
-    public static StringBuilder deleteCharacters(StringBuilder string,int index1,int index2,int minLength){
+    public static StringBuilder deleteCharacters(StringBuilder string,int startIndex,int endIndex){
               int initialLength=finalLength(string);
               System.out.println("Initial length of the string is:"+initialLength);
               StringBuilder finalString=new StringBuilder();
-              if(initialLength>=minLength){
-               finalString=string.delete(index1,index2);
-              int finalLength=finalLength(finalString);
-              System.out.println("Final string length is:"+finalLength);
+              if(initialLength>=endIndex){
+               finalString=string.delete(startIndex,endIndex);
+               int finalLength=finalLength(finalString);
+               System.out.println("Final string length is:"+finalLength);
               }
               else{
+               System.out.println("Length is not enough");
                finalString=null;
               }
               return finalString;
    }
-   public static StringBuilder replaceCharacters(StringBuilder string,int index1,int index2,int minLength,String replaceString){
+   public static StringBuilder replaceCharacters(StringBuilder string,int startIndex,int endIndex,String replaceString){
               int initialLength=finalLength(string);
               System.out.println("Initial length of the string is:"+initialLength);
               StringBuilder finalString=new StringBuilder();
-              if(initialLength>=minLength){
-              finalString=string.replace(index1,index2,replaceString);
-              int finalLength=finalLength(finalString);
-              System.out.println("Final string length is:"+finalLength);
+              int replaceLength=replaceString.length();
+              if(initialLength>=endIndex){
+                 if((startIndex<endIndex)&&((endIndex-startIndex)==replaceLength)){
+                    finalString=string.replace(startIndex,endIndex,replaceString);
+                    int finalLength=finalLength(finalString);
+                    System.out.println("Final string length is:"+finalLength);
+              }
+                 else{
+                   System.out.println("Length of the replace String is not enough");
+                   finalString=null;
+               }
               }
               else{
-               finalString=null;
+                System.out.println("Length of the string is not enough");
+                finalString=null;
               }
               return finalString;
    }
-      public static int findIndex(StringBuilder string,String [] array,String replaceString){
-              StringBuilder string1=string.replace(array[0].length(),array[0].length()+1,replaceString);
-              StringBuilder finalString=string1.replace(array[0].length()+array[1].length()+1,array[0].length()+array[1].length()+2,replaceString);
-              System.out.println("Final string is:"+finalString);
-              int length=finalLength(finalString);
+      public static StringBuilder findIndex(StringBuilder string,String replaceString){
+              for(int i=0;i<string.length();i++){
+                  if(string.charAt(i)==' '){
+                      string.replace(i,i+1,replaceString);
+                   }
+              }
+              int length=finalLength(string);
               System.out.println("length of the string is:"+length);
-              int firstIndex=finalString.indexOf(replaceString);
-              return firstIndex;
+              int firstIndex=string.indexOf(replaceString);
+              System.out.println("First index of # is:"+firstIndex);
+              return string;
   }
-  public static int findLastIndex(StringBuilder string,String [] array,String replaceString){
-              StringBuilder string1=string.replace(array[0].length(),array[0].length()+1,replaceString);
-              StringBuilder finalString=string1.replace(array[0].length()+array[1].length()+1,array[0].length()+array[1].length()+2,replaceString);
-              System.out.println("Final string is:"+finalString);
-              int length=finalLength(finalString);
+  public static StringBuilder findLastIndex(StringBuilder string,String replaceString){
+              for(int i=0;i<string.length();i++){
+                  if(string.charAt(i)==' '){
+                      string.replace(i,i+1,replaceString);
+                   }
+              }
+              int length=finalLength(string);
               System.out.println("length of the string is:"+length);
-              int lastIndex=finalString.lastIndexOf(replaceString);
-              return lastIndex;
+              int lastIndex=string.lastIndexOf(replaceString);
+              System.out.println("Last index of # is:"+lastIndex);
+              return string;
   }
 }         
-
-
-
-
-
-
-
-
-
 
