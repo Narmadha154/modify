@@ -1,6 +1,26 @@
-
 import java.util.*;
 public class HashMapTaskRunner{
+   public static String[] getString(){
+     Scanner sc=new Scanner(System.in);
+     System.out.println("Enter the no.of Strings:");
+     int size=sc.nextInt();
+     String [] stringArray=new String[size];
+      for(int i=0;i<size;i++){
+            stringArray[i]=sc.next();
+      }
+    return stringArray;
+   }
+   
+   public static int[] getInteger(){
+     Scanner sc=new Scanner(System.in);
+     System.out.println("Enter the no.of Strings:");
+     int size=sc.nextInt();
+     int [] integerArray=new int[size];
+      for(int i=0;i<size;i++){
+            integerArray[i]=sc.nextInt();
+      }
+    return integerArray;
+   }
    public static void main(String [] args){
     System.out.println("Enter the program number:");
     Scanner sc=new Scanner(System.in);
@@ -11,7 +31,9 @@ public class HashMapTaskRunner{
           System.out.println("Size of the Hashmap:"+size);
           break;
        case 2:
-          HashMap<String,String> stringMap=HashMapTask.findStringMapSize();
+          String [] keyArray=getString();
+          String [] valueArray=getString();
+          HashMap<String,String> stringMap=HashMapTask.findStringMapSize(keyArray,valueArray);
           System.out.println("Hashmap elements:");
           for(Map.Entry str : stringMap.entrySet()){    
             System.out.println(str.getKey()+" "+str.getValue());    
@@ -20,8 +42,10 @@ public class HashMapTaskRunner{
           System.out.println("Size of the String Hashmap:"+mapSize1);
           break;
       case 3:
-          HashMap<Integer,Integer> integerMap=HashMapTask.findIntegerMapSize();
-         System.out.println("Hashmap elements:");
+          int [] keyIntArray=getInteger();
+          int [] valueIntArray=getInteger();
+          HashMap<Integer,Integer> integerMap=HashMapTask.findIntegerMapSize(keyIntArray,valueIntArray);
+          System.out.println("Hashmap elements:");
           for(Map.Entry intMap : integerMap.entrySet()){    
            System.out.println(intMap.getKey()+" "+intMap.getValue());    
           }   
@@ -29,7 +53,9 @@ public class HashMapTaskRunner{
           System.out.println("Size of the Integer Hashmap:"+mapSize2);
           break;
       case 4:
-          HashMap<String,Integer> strIntMap=HashMapTask.createStringIntegerHashMap();
+          String [] keyStrIntArray=getString();
+          int [] valueStrIntArray=getInteger();
+          HashMap<String,Integer> strIntMap=HashMapTask.findStringIntegerMapSize(keyStrIntArray,valueStrIntArray);
           int mapSize=strIntMap.size();
            System.out.println("Hashmap elements:");
            for(Map.Entry map: strIntMap.entrySet()){    
@@ -38,7 +64,9 @@ public class HashMapTaskRunner{
           System.out.println("Size of the String Integer Hashmap:"+mapSize);
           break;
      case 6:
-          HashMap<String,String> strMap=HashMapTask.findStringMapSize();
+          String [] keyStrArray=getString();
+          String [] valueStrArray=getString();
+          HashMap<String,String> strMap=HashMapTask.findStringMapSize(keyStrArray,valueStrArray);
           System.out.println("Hashmap elements:");
          for(Map.Entry str : strMap.entrySet()){    
             System.out.println(str.getKey()+" "+str.getValue());    
@@ -46,66 +74,72 @@ public class HashMapTaskRunner{
           int strMapSize=strMap.size();
           System.out.println("Size of the String Hashmap:"+strMapSize);
           break;
-     case 7:
+         case 7:
          /*System.out.println("Enter the non null value:");
            int nonNullValue=sc.nextInt();*/
-           HashMap<Integer,Integer> nullMap=HashMapTask.addNull();
+           int [] keyIntArr=getInteger();
+           int [] valueIntArr=getInteger();
+           HashMap<Integer,Integer> nullMap=HashMapTask.addNull(keyIntArr,valueIntArr);
            System.out.println("HashMap elements:"+nullMap);
            int nullMapSize=nullMap.size();
            System.out.println("HashMap size:"+nullMapSize);
            break;
      case 8:
-           //HashMap<String,String> strMap=createStringHashMap();
+           String [] keyStrArr=getString();
+           String [] valueStrArr=getString();
            System.out.println("Enter the key to be checked:");
            String key=sc.next();
-           boolean value=HashMapTask.checkKey(key);
+           boolean value=HashMapTask.checkKey(keyStrArr,valueStrArr,key);
            System.out.println("Given key is present in the hashmap:"+value);
            break;
      case 9:
            //HashMap<String,String> stringHashMap=createStringHashMap();
+            String [] keyStArray=getString();
+            String [] valueStArray=getString();
            System.out.println("Enter the value to be checked:");
            String strValue=sc.next();
-           boolean booleanValue=HashMapTask.checkValue(strValue);
+           boolean booleanValue=HashMapTask.checkValue(keyStArray,valueStArray,strValue);
            System.out.println("Given value is present in the hashmap:"+booleanValue);
            break;
      case 10:
-         // HashMap<String,String> stringHash=createStringHashMap();
-          HashMap<String,String> changedHash=HashMapTask.changeValues();
+          String [] keyStArr=getString();
+          String [] valueStArr=getString();
+          HashMap<String,String> changedHash=HashMapTask.changeValues(keyStArr,valueStArr);
           System.out.println("Hashmap elements:");
            for(Map.Entry mapChange: changedHash.entrySet()){    
                 System.out.println(mapChange.getKey()+" "+mapChange.getValue());    
            } 
            break;
      case 11:
-         //HashMap<String,Integer> strIntegerHash=createStringIntegerHashMap();
+          String [] keyStrIntArr=getString();
+          int [] valueStrIntArr=getInteger();
          System.out.println("Enter the key for which you want the value:");
          String existingKey=sc.next();
-         int valueForKey=HashMapTask.getValue(existingKey);
+         int valueForKey=HashMapTask.getValue(keyStrIntArr,valueStrIntArr,existingKey);
          System.out.println("Value for the given key is:"+valueForKey);
          break;
     case 12:
-        // HashMap<String,Integer> strIntegerHashMap=createStringIntegerHashMap();
+           String [] keyStIntArray=getString();
+          int [] valueStIntArray=getInteger();
          System.out.println("Enter the non existing key for which you want the value:");
          String nonExistingKey=sc.next();
-         int valueKey=HashMapTask.getValue(nonExistingKey);
+         int valueKey=HashMapTask.getValue(keyStIntArray,valueStIntArray,nonExistingKey);
          System.out.println("Value for the given key is:"+valueKey);
          break;
      case 13:
-        // HashMap<String,String> strHashMap=createStringHashMap();
+          String [] keyArr=getString();
+          String [] valueArr=getString();
          System.out.println("Enter the non existing key for which you want the value:");
          String nonExistKey=sc.next();
-         String valueOfKey=HashMapTask.getValueForKey(nonExistKey);
+         String valueOfKey=HashMapTask.getValueForKey(keyArr,valueArr,nonExistKey);
          System.out.println("Value for the given key is:"+valueOfKey);
          break;
      case 14:
-        // HashMap<Integer,Integer> intHashMap=createIntegerHashMap();
+          int [] keyIntArr1=getInteger();
+          int [] valueIntArr1=getInteger();
          System.out.println("Enter the key which you want to remove:");
          int removeKey=sc.nextInt();
-        /* System.out.println("Hashmap elements before changes:");
-           for(Map.Entry map: intHashMap.entrySet()){    
-                System.out.println(map.getKey()+" "+map.getValue());    
-           } */
-         HashMap<Integer,Integer> changedMap=HashMapTask.removeKey(removeKey);
+         HashMap<Integer,Integer> changedMap=HashMapTask.removeKey(keyIntArr1,valueIntArr1,removeKey);
          System.out.println("Hashmap elements after changes:");
            for(Map.Entry map: changedMap.entrySet()){    
                 System.out.println(map.getKey()+" "+map.getValue());    
@@ -114,16 +148,13 @@ public class HashMapTaskRunner{
          System.out.println("Size of the HashMap after change:"+changedSize);
          break;
      case 15:
-       //  HashMap<String,String> integerHashMap=createStringHashMap();
+          String [] keyArr1=getString();
+          String [] valueArr1=getString();
          System.out.println("Enter the key which you want to remove:");
          String removedKey=sc.next();
          System.out.println("Enter the value for which you want to check matching:");
          String matchValue=sc.next();
-        /*  System.out.println("Hashmap elements before changes:");
-           for(Map.Entry map: integerHashMap.entrySet()){    
-                System.out.println(map.getKey()+" "+map.getValue());    
-           } */
-         HashMap<String,String> changedHashMap=HashMapTask.removeMatchedValue(removedKey,matchValue);
+         HashMap<String,String> changedHashMap=HashMapTask.removeMatchedValue(keyArr1,valueArr1,removedKey,matchValue);
          System.out.println("Hashmap elements after changes:");
            for(Map.Entry map: changedHashMap.entrySet()){    
                 System.out.println(map.getKey()+" "+map.getValue());    
@@ -132,16 +163,13 @@ public class HashMapTaskRunner{
          System.out.println("Size of the HashMap after changes:"+changedHashSize);
          break;
      case 16:
-       // HashMap<String,Integer> strIntHash=createStringIntegerHashMap();
+           String [] keySIArray=getString();
+          int [] valueSIArray=getInteger();
         System.out.println("Enter the key which you want to replace:");
          String replaceKey=sc.next();
          System.out.println("Enter the value to be replaced:");
          int replaceValue=sc.nextInt();
-        /* System.out.println("Hashmap elements before changes:");
-          for(Map.Entry hashMap1: strIntHash.entrySet()){    
-                System.out.println(hashMap1.getKey()+" "+hashMap1.getValue());    
-           }*/
-         HashMap<String,Integer> replacedHashMap=HashMapTask.replaceValue(replaceKey,replaceValue);
+         HashMap<String,Integer> replacedHashMap=HashMapTask.replaceValue(keySIArray,valueSIArray,replaceKey,replaceValue);
          System.out.println("Hashmap elements after changes:");
           for(Map.Entry hashMap: replacedHashMap.entrySet()){    
                 System.out.println(hashMap.getKey()+" "+hashMap.getValue());    
@@ -150,18 +178,15 @@ public class HashMapTaskRunner{
          System.out.println("Size of the HashMap after changes:"+replacedHashSize);
          break;
       case 17:
-      //  HashMap<String,Integer> strIntHash1=createStringIntegerHashMap();
+           String [] keySIArr=getString();
+          int [] valueSIArr=getInteger();
         System.out.println("Enter the key which you want to replace:");
          String replaceKey1=sc.next();
          System.out.println("Enter the value to be replaced:");
          int replaceValue1=sc.nextInt();
          System.out.println("Enter the value for which you want to check matching:");
          int matchValue1=sc.nextInt();
-       /*  System.out.println("Hashmap elements before changes:");
-          for(Map.Entry hashMap1: strIntHash1.entrySet()){    
-                System.out.println(hashMap1.getKey()+" "+hashMap1.getValue());    
-           }*/
-         HashMap<String,Integer> replacedHashMap1=HashMapTask.replaceMatchedValue(replaceKey1,replaceValue1,matchValue1);
+         HashMap<String,Integer> replacedHashMap1=HashMapTask.replaceMatchedValue(keySIArr,valueSIArr,replaceKey1,replaceValue1,matchValue1);
          System.out.println("Hashmap elements after changes:");
           for(Map.Entry hashMap: replacedHashMap1.entrySet()){    
                 System.out.println(hashMap.getKey()+" "+hashMap.getValue());    
@@ -170,10 +195,12 @@ public class HashMapTaskRunner{
          System.out.println("Size of the HashMap after changes:"+replacedHashSize1);
          break;
      case 18:
-          //HashMap<String,Integer> strIntHashMap1=createStringIntegerHashMap();
-         // HashMap<String,Integer> strIntHashMap2=createStringIntegerHashMap();
+          String [] keySIArr1=getString();
+          int [] valueSIArr1=getInteger();
+          String [] keySIArr2=getString();
+          int [] valueSIArr2=getInteger();
           System.out.println("Hashmap1 elements before changes:");
-          HashMap<String,Integer> transferedHashMap=HashMapTask.transferKeysValues();
+          HashMap<String,Integer> transferedHashMap=HashMapTask.transferKeysValues(keySIArr1,valueSIArr1,keySIArr2,valueSIArr2);
           System.out.println("Hashmap2 elements after transfers:");
           for(Map.Entry hashMap: transferedHashMap.entrySet()){    
                 System.out.println(hashMap.getKey()+" "+hashMap.getValue());    
@@ -182,7 +209,9 @@ public class HashMapTaskRunner{
           System.out.println("Size of the HashMap2 after changes:"+transferedHashSize);
            break;
       case 19:
-          HashMap<String,Integer> map=HashMapTask.iterateHashMap();
+          String [] keySIntArr=getString();
+          int [] valueSIntArr=getInteger();
+          HashMap<String,Integer> map=HashMapTask.iterateHashMap(keySIntArr,valueSIntArr);
           System.out.println("Hashmap elements:");
           for(Map.Entry hashMap1: map.entrySet()){    
                 System.out.println(hashMap1.getKey()+" "+hashMap1.getValue());    
@@ -196,7 +225,9 @@ public class HashMapTaskRunner{
            }
           int beforeSize=strIntHashMap.size();
           System.out.println("Size of the HashMap1 before changes:"+beforeSize);*/
-          HashMap<String,Integer> clearedHashMap=HashMapTask.removeAllEntries();
+           String [] keySIntArr1=getString();
+          int [] valueSIntArr1=getInteger();
+          HashMap<String,Integer> clearedHashMap=HashMapTask.removeAllEntries(keySIntArr1,valueSIntArr1);
           System.out.println("Hashmap elements after changes:"+clearedHashMap);
          /* for(Map.Entry hashMap1: clearedHashMap.entrySet()){    
                 System.out.println(hashMap1.getKey()+" "+hashMap1.getValue());    
@@ -210,3 +241,15 @@ public class HashMapTaskRunner{
      }
   }
  }
+
+
+
+
+
+
+
+
+
+
+
+
