@@ -1,6 +1,6 @@
 
 
-import java.util.*;
+import java.util.ArrayList;
 public class ArrayListTask{
     public static int findLength(){
       ArrayList<String> list=new ArrayList<>();
@@ -51,15 +51,13 @@ public class ArrayListTask{
       }
       return secondList;
     }
-   public static ArrayList<String> createThreeArrayList(ArrayList<String> firstList){
-      ArrayList<String> secondList=ArrayListTaskRunner.createStringArrayList();
+   public static ArrayList<String> createThreeArrayList(ArrayList<String> firstList,ArrayList<String> secondList){
       ArrayList<String> thirdList=new ArrayList<String>();
       thirdList.addAll(firstList);
       thirdList.addAll(secondList);
       return thirdList;
     }
-   public static ArrayList<String> createThirdArrayList(ArrayList<String> firstList){
-     ArrayList<String> secondList=ArrayListTaskRunner.createStringArrayList();
+   public static ArrayList<String> createThirdArrayList(ArrayList<String> firstList,ArrayList<String> secondList){
       ArrayList<String> thirdList=new ArrayList<String>();
       thirdList.addAll(secondList);
       thirdList.addAll(firstList);
@@ -73,6 +71,10 @@ public class ArrayListTask{
       decimalList.remove(position);
       return decimalList;
     } 
+    public static ArrayList<Long> removeLongValue(ArrayList<Long> longList,int startIndex,int endIndex){
+      longList.subList(startIndex,endIndex).clear();
+      return longList;
+    }
    public static ArrayList<String> removeElements(ArrayList<String> firstList){
       ArrayList<String> secondList=ArrayListTaskRunner.createStringArrayList();
       firstList.removeAll(secondList);
@@ -94,28 +96,6 @@ public class ArrayListTask{
       return list;
     } 
 }
-  class Remove extends ArrayList<Long>{
-      public static  ArrayList<Long> removeLongValue(){
-         Remove longList=new Remove();
-         Scanner sc=new Scanner(System.in);
-         System.out.println("Enter the no.of long values:");
-         int size1=sc.nextInt();
-         System.out.println("Enter the long values:");
-         Long [] longArray=new Long[size1];
-         for(int i=0;i<size1;i++){
-            longArray[i]=sc.nextLong();
-         }
-        for(int i=0;i<longArray.length;i++){
-          longList.add(longArray[i]);
-        } 
-        System.out.println("Enter the start index:");
-        int startIndex=sc.nextInt();
-        System.out.println("Enter the end index:");
-        int endIndex=sc.nextInt();
-        longList.removeRange(startIndex,endIndex);
-      return longList;
-    } 
-  }
     class Student{
        int rollNo;
        String name;
